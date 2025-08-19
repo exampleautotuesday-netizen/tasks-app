@@ -76,13 +76,22 @@ A beautiful and modern task management application built with Next.js, Supabase,
    - Click "New Project"
    - Import your Git repository
 
-3. Configure environment variables in Vercel:
-   - Go to your project settings
-   - Add environment variables:
-     - `NEXT_PUBLIC_SUPABASE_URL`
-     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. **Configure environment variables in Vercel:**
+   - Go to your project settings → Environment Variables
+   - Add the following environment variables:
+     - **Name:** `NEXT_PUBLIC_SUPABASE_URL`
+     - **Value:** Your Supabase project URL (e.g., `https://your-project.supabase.co`)
+     - **Environment:** Production, Preview, Development
+     
+     - **Name:** `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+     - **Value:** Your Supabase anon/public key
+     - **Environment:** Production, Preview, Development
 
-4. Deploy! Vercel will automatically build and deploy your application.
+4. **Important:** Make sure to select all environments (Production, Preview, Development) for each variable
+
+5. Deploy! Vercel will automatically build and deploy your application.
+
+**Note:** The `vercel.json` file is configured to work with these environment variables. You don't need to create any Vercel secrets - just add the environment variables directly in your project settings.
 
 ## Database Schema
 
