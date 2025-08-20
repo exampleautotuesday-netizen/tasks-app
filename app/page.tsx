@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { supabase, type Task } from '@/lib/supabase'
+import { getSupabaseClient, type Task } from '@/lib/supabase'
 import TaskForm from '@/components/TaskForm'
 import TaskList from '@/components/TaskList'
 import toast from 'react-hot-toast'
@@ -18,6 +18,7 @@ export default function Home() {
 
   const fetchTasks = async () => {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('tasks')
         .select('*')
@@ -35,6 +36,7 @@ export default function Home() {
 
   const addTask = async (title: string, description?: string) => {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('tasks')
         .insert([{ title, description }])
@@ -53,6 +55,7 @@ export default function Home() {
 
   const updateTask = async (id: string, updates: Partial<Task>) => {
     try {
+      const supabase = getSupabaseClient()
       const { data, error } = await supabase
         .from('tasks')
         .update(updates)
@@ -71,6 +74,7 @@ export default function Home() {
 
   const deleteTask = async (id: string) => {
     try {
+      const supabase = getSupabaseClient()
       const { error } = await supabase
         .from('tasks')
         .delete()
